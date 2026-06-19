@@ -210,8 +210,8 @@ public:
     void drawPath(const SkPath& path, const SkPaint&) override;
     void drawDRRect(const SkRRect& outer, const SkRRect& inner, const SkPaint&) override;
 
-    // No need to specialize drawRegion or drawPatch as the default impls all route to drawPath,
-    // drawRect, or drawVertices as desired.
+    // No need to specialize drawRegion, drawPatch, or drawAtlas as the default impls all route to
+    // drawPath, drawRect, or drawVertices as desired.
 
     void drawEdgeAAQuad(const SkRect& rect, const SkPoint clip[4],
                         SkCanvas::QuadAAFlags aaFlags, const SkColor4f& color,
@@ -234,11 +234,9 @@ public:
                               const SkSamplingOptions&,
                               const SkPaint&,
                               SkCanvas::SrcRectConstraint) override;
-    // TODO: Implement these using per-edge AA quads and an inlined image shader program.
+    // TODO: Implement this using per-edge AA quads and an inlined image shader program.
     void drawImageLattice(const SkImage*, const SkCanvas::Lattice&,
                           const SkRect& dst, SkFilterMode, const SkPaint&) override {}
-    void drawAtlas(SkSpan<const SkRSXform>, SkSpan<const SkRect>, SkSpan<const SkColor>,
-                   sk_sp<SkBlender>, const SkPaint&) override {}
 
     void drawDrawable(SkCanvas*, SkDrawable*, const SkMatrix*) override {}
     void drawMesh(const SkMesh&, sk_sp<SkBlender>, const SkPaint&) override {}
